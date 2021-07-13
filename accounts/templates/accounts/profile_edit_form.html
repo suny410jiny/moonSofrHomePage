@@ -1,0 +1,17 @@
+{% extends 'accounts/layout.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div id="signup" data-target-group="idForm">
+      <!-- Title -->
+      <header class="text-center mb-5">
+        <h2 class="h4 mb-0">Please sign up</h2>
+        <p>Fill out the form to get started.</p>
+      </header>
+      <!-- End Title -->
+    {% csrf_token %}
+    {% bootstrap_form form%}
+     <div class="mb-3">
+        <button type="submit" class="btn btn-block btn-primary">프로필 수정</button>
+      </div>
+</div>
+{% endblock %}

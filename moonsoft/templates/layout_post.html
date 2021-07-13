@@ -1,0 +1,251 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Title -->
+  <title>문소프트에 오신걸 환영 합니다.</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.0.0-dist/css/bootstrap.css' %}"/>
+  <script src="{% static 'jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'bootstrap-5.0.0-dist/js/bootstrap.js' %}"></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+  <!-- Google Fonts -->
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+{#  <link rel="stylesheet" href="{% static 'customize/assets/vendor/font-awesome/css/all.min.css' %}">#}
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/hs-megamenu/src/hs.megamenu.css' %}">
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css' %}">
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/custombox/dist/custombox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/animate.css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/slick-carousel/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'customize/assets/vendor/fancybox/jquery.fancybox.css' %}">
+
+  <!-- CSS Space Template -->
+  <link rel="stylesheet" href="{% static 'customize/assets/css/theme.css' %}">
+</head>
+
+<body>
+  <!-- Skippy -->
+  <a id="skippy" class="sr-only sr-only-focusable u-skippy" href="#content">
+    <div class="container">
+      <span class="u-skiplink-text">Skip to main content</span>
+    </div>
+  </a>
+  <!-- End Skippy -->
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="u-header u-header--modern u-header--bordered u-header--sticky-top-lg">
+  {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <div class="u-header__section">
+
+      <div id="logoAndNav" class="container-fluid">
+
+        <!-- Nav -->
+        <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar">
+          <!-- Logo -->
+          <div class="u-header__navbar-brand-wrapper">
+            <a class="navbar-brand" href="{% url 'baseApp:index' %}" aria-label="Space">
+<!--                <img src="https://doubljungdd.blob.core.windows.net/static/mainImage/moonSoftMain/moonsoftlogo.png" alt="Logo" style="width: 45px; height: 45px;">-->
+                <img src="{% static 'mainImage/moonSoftMain/moonsoftlogo.png' %}" alt="Logo" style="width: 45px; height: 45px;">
+                <span class="u-header__navbar-brand-default text-dark" style="font-size: 20px;" ><strong>MOONSOFT</strong></span>
+                <span class="u-header__navbar-brand-mobile" style="font-size: 20px;" ><strong>MOONSOFT</strong></span>
+<!--              <img class="u-header__navbar-brand-default" src="{% static 'customize/assets/svg/logos/logo-white.svg' %}" alt="Logo">-->
+<!--              <img class="u-header__navbar-brand-on-scroll" src="{% static 'customize/assets/svg/logos/logo.svg' %}" alt="Logo">-->
+<!--              <img class="u-header__navbar-brand-mobile" src="{% static 'customize/assets/svg/logos/logo-short.svg' %}" alt="Logo">-->
+            </a>
+          </div>
+          <!-- End Logo -->
+
+          <!-- Responsive Toggle Button -->
+          <button type="button" class="navbar-toggler btn u-hamburger u-header__hamburger"
+                  aria-label="Toggle navigation"
+                  aria-expanded="false"
+                  aria-controls="navBar"
+                  data-toggle="collapse"
+                  data-target="#navBar">
+            <span class="d-none d-sm-inline-block">Menu</span>
+            <span id="hamburgerTrigger" class="u-hamburger__box ml-3">
+              <span class="u-hamburger__inner"></span>
+            </span>
+          </button>
+          <!-- End Responsive Toggle Button -->
+
+          <!-- Navigation -->
+          <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse py-0">
+            <ul class="navbar-nav u-header__navbar-nav">
+              <!-- Home -->
+              <li class="u-header__sub-menu-list-item" >
+                <a id="homeMegaMenu" class="nav-link u-header__nav-link" href="{% url 'baseApp:index' %}"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   aria-labelledby="homeSubMenu">
+                  Home
+                </a>
+              </li>
+              <!-- End Home -->
+
+              <!-- Pages -->
+              <li class="u-header__sub-menu-list-item" >
+                <a id="PagesMegaMenu" class="nav-link u-header__nav-link" href="{% url 'baseApp:post_list_prod' %}"
+                   aria-haspopup="true"
+                   aria-expanded="false">
+                  Products
+                </a>
+              </li>
+              <!-- End Pages -->
+
+              <!-- Projects -->
+              <li class="u-header__sub-menu-list-item" >
+                <a id="worksMegaMenu" class="nav-link u-header__nav-link" href="{% url 'baseApp:post_list_project' %}"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   aria-labelledby="worksSubMenu">
+                  Projects
+                </a>
+              </li>
+
+                {% if not user.is_authenticated %}
+              <li class="nav-item u-header__nav-item-btn">
+                  <a class="btn btn-sm btn-primary"  href="{% url 'accounts:login' %}" role="button"
+{#                     data-modal-target="#signupModal"#}
+                     data-overlay-color="#151b26">
+                  <i class="fa fa-user-circle mr-1"></i>
+                  Login
+                </a>
+              </li>
+              {% else %}
+              <li class="nav-item u-header__nav-item-btn">
+                <a class="btn btn-sm btn-secondary" href="{% url 'accounts:logout' %}" role="button"
+                   data-overlay-color="#151b26">
+                  <i class="fa fa-user-circle mr-1"></i>
+                  Logout
+                </a>
+              </li>
+              {% endif %}
+              <!-- End Button -->
+            </ul>
+          </div>
+          <!-- End Navigation -->
+        </nav>
+        <!-- End Nav -->
+      </div>
+    </div>
+  </header>
+  <!-- ========== END HEADER ========== -->
+{% block content %}
+{% endblock %}
+  <!-- ========== FOOTER ========== -->
+   <footer class="bg-dark">
+    <div class="container space-2">
+      <div class="">
+        <div class="">
+           <div class="text-white">대전시 유성구 반석동로 54, 센타프라자3, 303호 </div>
+           <div class="text-white">© MOOONSOFT</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ========== END FOOTER ========== -->
+  <!-- End Go to Top -->
+
+  <!-- JS Global Compulsory -->
+  <script src="{% static 'customize/assets/vendor/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/popper.js/dist/umd/popper.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'customize/assets/vendor/hs-megamenu/src/hs.megamenu.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/custombox/dist/custombox.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/custombox/dist/custombox.legacy.min.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/slick-carousel/slick/slick.js' %}"></script>
+  <script src="{% static 'customize/assets/vendor/fancybox/jquery.fancybox.min.js' %}"></script>
+
+  <!-- JS Space -->
+  <script src="{% static 'customize/assets/js/hs.core.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.header.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.unfold.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.validation.js' %}"></script>
+  <script src="{% static 'customize/assets/js/helpers/hs.focus-state.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.malihu-scrollbar.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.modal-window.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.show-animation.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.slick-carousel.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.fancybox.js' %}"></script>
+  <script src="{% static 'customize/assets/js/components/hs.go-to.js' %}"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    $(window).on('load', function () {
+      // initialization of HSMegaMenu component
+      $('.js-mega-menu').HSMegaMenu({
+        event: 'hover',
+        pageContainer: $('.container'),
+        breakpoint: 991,
+        hideTimeOut: 0
+      });
+    });
+
+    $(document).on('ready', function () {
+      // initialization of header
+      $.HSCore.components.HSHeader.init($('#header'));
+
+      // initialization of unfold component
+      $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+        afterOpen: function () {
+          if (!$('body').hasClass('IE11')) {
+            $(this).find('input[type="search"]').focus();
+          }
+        }
+      });
+
+      // initialization of form validation
+      $.HSCore.components.HSValidation.init('.js-validate', {
+        rules: {
+          confirmPassword: {
+            equalTo: '#password'
+          }
+        }
+      });
+
+      // initialization of forms
+      $.HSCore.helpers.HSFocusState.init();
+
+      // initialization of malihu scrollbar
+      $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+      // initialization of autonomous popups
+      $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-signup-modal', {
+        autonomous: true
+      });
+
+      // initialization of show animations
+      $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+      // initialization of slick carousel
+      $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+      // initialization of fancybox
+      $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+      // initialization of go to
+      $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+django~=3.0.0
+django-debug-toolbar
+django-bootstrap4
+pillow
+django-pydenticon
+easy-thumbnails
+django-multiupload
+django-sql-utils
+django-ckeditor
+sentry_sdk
+python-decouple

@@ -1,0 +1,88 @@
+{% extends "baseApp/layout_post.html" %}
+{% load bootstrap4 %}
+{% block title %}
+    Projects
+{% endblock title %}
+{% block content %}
+ <main id="content">
+    <!-- Hero Section -->
+    <div class="container space-2 space-3-top--lg">
+      <h2>Projects : <span style="font-palette: light"> {{ post_count }} </span></h2>
+    </div>
+    <!-- End Hero Section -->
+
+    <!-- News Blog Content -->
+    <div class="container mt-4">
+      <hr class="my-0 mb-4">
+      <div class="row">
+        <div class="mb-9 mb-lg-0">
+            {% for post in post_list %}
+                {% if forloop.counter|divisibleby:2 %}
+                    {% include "baseApp/post_album.html" %}
+                    </div>
+                {% else %}
+                    {% if forloop.last %}
+                        <div class="card-deck d-block d-lg-flex">
+                        {% include "baseApp/post_album.html" %}
+                        </div>
+                    {% else %}
+                        <div class="card-deck d-block d-lg-flex">
+                        {% include "baseApp/post_album.html" %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        <div class="mb-9"></div>
+
+          <!-- Pagination -->
+           <nav aria-label="Page navigation">
+                <ul class="pagination">
+                <!-- 이전페이지 -->
+                {% if post_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ post_list.previous_page_number }}" aria-label="이전">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">이전</span>
+                        </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" >이전</a>
+                </li>
+                {% endif %}
+                <!-- 페이지리스트 -->
+                {% for page_number in post_list.paginator.page_range %}
+                    {% if page_number == post_list.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                <!-- 다음페이지 -->
+                {% if post_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ post_list.next_page_number }}" aria-label="다음">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">다음</span>
+                        </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" >다음</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+          <!-- End Pagination -->
+        </div>
+      </div>
+    </div>
+    <!-- End News Blog Content -->
+  </main>
+{% endblock content %}
+
+
+

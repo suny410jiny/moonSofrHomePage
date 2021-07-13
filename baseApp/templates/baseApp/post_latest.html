@@ -1,0 +1,20 @@
+{% load thumbnail%}
+{% load humanize %}
+
+<article class="card border-0 mb-5">
+  <div class="card-body row align-items-stretch no-gutters p-0">
+    <!-- News Blog Card -->
+    <div class="col-7 border border-right-0 rounded-left">
+      <div class="p-5">
+        <h1 class="h5 mb-3" style="font-weight:bold ">
+          <a href="{% url 'baseApp:post_detail_prod' post.pk %}">{{ post.title }}</a>
+        </h1>
+          <h6 class="text-muted" style="">{{ post.caption }}</h6>
+          <h6 class="text-muted" style="">{{ post.created_at|date:"Y.m.d" }}</h6>
+      </div>
+    </div>
+      <img class="col-3 card-img-right border border-left-0 bg-img-hero" src="{{ post.thumnail.url }}"/>
+  </div>
+  <!-- End News Blog Card -->
+
+</article>

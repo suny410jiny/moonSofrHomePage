@@ -1,0 +1,38 @@
+{% extends "baseApp/layout_post.html" %}
+{% load bootstrap4 %}
+{% block title %}
+    Instagram / Post List
+{% endblock title %}
+{% block content %}
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content">
+  <div class="gradient-overlay-half-dark-v3 bg-img-hero"
+             style="background-image: url({{post.thumnail.url}}); width: 100%; height: 400px;">
+        <div class="d-lg-flex align-items-lg-center height-85vh--lg">
+            <div class="container space-1-bottom--lg mb-lg-9">
+                <div class="row justify-content-lg-between align-items-lg-center">
+{#                        <div class="col-lg-5">#}
+                        <!-- Title -->
+{#                        <h4 class="d-block text-white mb-lg-9">{{ post.title}}</h4>#}
+{#                            <h1 class="display-4 font-size-48--md- text-white mb-0">문소프트에 오신걸 환영합니다.</h1>#}
+                        <!-- End Title -->
+{#                        </div>#}
+                </div>
+            </div>
+        </div>
+            <!-- End Main Content -->
+  </div>
+    <div class="container space-3-top--lg">
+      <h1>{{ post.title}} <small class="text-muted" style="font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ post.created_at}}</small> </h1>
+      <p class="lead">{{ post.caption}}</p>
+    </div>
+    <div class="container">
+        <div id = "body"  style="overflow: auto">
+                    {{ post.body|safe }}
+        </div>
+    </div>
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+{% endblock %}
+
