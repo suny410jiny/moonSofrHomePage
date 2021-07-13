@@ -109,7 +109,7 @@ DATABASES = {
         'PASSWORD': 'zszs6029!',
         'HOST': 'localhost',
         # 'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 # SECRET_KEY='o4%qpv(-1s_rf5w12)*78fogq@%r#$&yztn6sc5gy19w!vp6j+'
