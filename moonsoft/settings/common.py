@@ -21,16 +21,14 @@ BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o4%qpv(-1s_rf5w12)*78fogq@%r#$&yztn6sc5gy19w!vp6j+'
-# SECRET_KEY = config('SECRET_KEY')
+
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'moonsoft.iptime.org',
-    # '127.0.0.1',
-    # '192.168.0.16',
+
 ]
 SESSION_EXPIRE_AT_BROWSER_CLOSE =True
 
@@ -102,22 +100,9 @@ WSGI_APPLICATION = 'moonsoft.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'zszs6029!',
-        'HOST': 'localhost',
-        # 'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+
 }
-# SECRET_KEY='o4%qpv(-1s_rf5w12)*78fogq@%r#$&yztn6sc5gy19w!vp6j+'
-# POSTGRES_NAME=moonsoftdatbase
-# POSTGRES_USER=moonsoftadmin
-# POSTGRES_PASSWORD=zszs6029!
-# POSTGRES_HOST=hostname
-# POSTGRES_PORT=5432
+
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -183,8 +168,6 @@ LOGIN_REDIRECT_URL = 'root'
 INTERNAL_IPS = [
 	    # ...
 	    '127.0.0.1',
-        # '192.168.0.16',
-	    # ...
 	]
 
 
